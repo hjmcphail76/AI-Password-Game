@@ -5,13 +5,14 @@ import APIinterface, random
 
 previous = input("Enter a password: ")
 
-for i in range(3):
+for i in range(5):
     requirement = APIinterface.makeRequirement(previous)
     print(requirement)
     while (True):
         previous = input("Enter a password: ")
-        checkPassword = "Check the following text: " + previous + "    .To see if it meets the following requirement: " + requirement +  "   . Return ONLY the words true or false."
-        result = APIinterface.check(checkPassword)
-        print(result)
-        if result == "true":
+        result = APIinterface.check(previous,requirement)
+        if "true" in result:
             break
+        else: #For ease of reading, the else is here even though the break is above.
+            print(APIinterface.roast(previous,requirement))
+
